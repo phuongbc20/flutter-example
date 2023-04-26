@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        sh 'git clone https://github.com/phuongbc20/flutter-example.git -b main'
+        sh 'git clone https://github.com/phuongbc20/flutter-example.git -b main .'
       }
     }
 
