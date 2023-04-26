@@ -13,5 +13,11 @@ pipeline {
       }
     }
 
+    stage('') {
+      steps {
+        sh 'echo $DOCKERHUB_PASSWORD | docker login -u phuongbc20 --password-stdin'
+      }
+    }
+
   }
 }
