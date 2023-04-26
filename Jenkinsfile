@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'build-image'
+    }
+
+  }
   stages {
     stage('Checkout') {
       steps {
@@ -26,5 +31,8 @@ docker push phuongbc20/flutter-apk:latest'''
       }
     }
 
+  }
+  environment {
+    DOCKERHUB_PASSWORD = 'credentials(\'dockerhub\')'
   }
 }
