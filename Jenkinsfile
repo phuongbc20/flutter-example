@@ -9,7 +9,7 @@ pipeline {
 
     stage('Build image') {
       steps {
-        sh 'docker build -t phuongbc20/flutter-apk:'
+        sh 'docker build -t phuongbc20/flutter-apk:${BUILD_NUMBER} -t phuongbc20/flutter-apk:latest .'
       }
     }
 
