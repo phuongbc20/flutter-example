@@ -13,9 +13,16 @@ pipeline {
       }
     }
 
-    stage('') {
+    stage('Login') {
       steps {
         sh 'echo $DOCKERHUB_PASSWORD | docker login -u phuongbc20 --password-stdin'
+      }
+    }
+
+    stage('Push image') {
+      steps {
+        sh '''docker push phuongbc20/flutter-apk:${BUILD_NUMBER} 
+docker push phuongbc20/flutter-apk:latest'''
       }
     }
 
