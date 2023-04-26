@@ -31,6 +31,12 @@ docker push phuongbc20/flutter-apk:latest'''
       }
     }
 
+    stage('Clear workspace') {
+      steps {
+        cleanWs(cleanWhenSuccess: true, cleanWhenFailure: true, cleanWhenAborted: true, cleanWhenNotBuilt: true)
+      }
+    }
+
   }
   environment {
     DOCKERHUB_PASSWORD = 'credentials(\'dockerhub\')'
