@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'phuongbc20/build-flutter-apk:v3'
-    }
-
-  }
+  agent any
   stages {
     stage('Check code') {
       parallel {
