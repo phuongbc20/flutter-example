@@ -1,21 +1,15 @@
 pipeline {
   agent any
   stages {
-    stage('Check code') {
-      parallel {
-        stage('Check code') {
-          steps {
-            sh 'flutter build apk'
-          }
-        }
+    stage('Checkout') {
+      steps {
+        sh 'git clone https://github.com/phuongbc20/flutter-example.git -b main'
+      }
+    }
 
-        stage('List file') {
-          steps {
-            sh '''ls
-whoami'''
-          }
-        }
-
+    stage('Build image') {
+      steps {
+        sh 'docker build -t phuongbc20/flutter-apk:'
       }
     }
 
