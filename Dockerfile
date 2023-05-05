@@ -10,7 +10,7 @@ ENV TZ=Asia/HoChiMinh \
     DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
- && apt-get install -y openjdk-11-jdk curl xz-utils unzip git \
+ && apt-get install -y openjdk-11-jdk wget curl xz-utils unzip git \
  && apt-get clean
 
 RUN addgroup --gid 1000 flutter \
@@ -23,7 +23,7 @@ RUN mkdir /home/flutter/Android
 
 WORKDIR /home/flutter/Android
 
-RUN curl https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz --output flutter.tar.xz
+RUN wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz -O flutter.tar.xz
 
 RUN tar -xf flutter.tar.xz && \
     rm flutter.tar.xz
@@ -32,7 +32,7 @@ ENV PATH="/home/flutter/Android/flutter/bin:$PATH"
 
 RUN git config --global --add safe.directory /home/flutter/Android/flutter
 
-RUN curl https://dl.google.com/android/repository/commandlinetools-linux-${COMMANDLINETOOLS_VERSION}_latest.zip --output commandlinetools-linux.zip
+RUN wget https://dl.google.com/android/repository/commandlinetools-linux-${COMMANDLINETOOLS_VERSION}_latest.zip -O commandlinetools-linux.zip
 
 RUN unzip commandlinetools-linux.zip && \
     rm commandlinetools-linux.zip
